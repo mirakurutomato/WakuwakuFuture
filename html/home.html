@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wakuwaku of the Future Lab</title>
+  <meta name="description" content="誰一人取り残さない、未来の「わくわく」を体験できるようなWebアプリ開発を目指しています。私たちは技術の力で日常生活をより便利にし、すべての人が新しい体験を楽しめる社会を創造します。">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #e6f7ff, #ffffff);
+      color: #2c3e50;
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 1.5rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    header h1 {
+      font-size: clamp(1.5rem, 5vw, 1.8rem);
+      background: linear-gradient(90deg, #0077ff, #00d4ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0;
+    }
+
+    nav a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      font-weight: bold;
+      color: #0077ff;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #00aaff;
+    }
+
+    .hero {
+      height: 90vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      background: linear-gradient(160deg, rgba(0,119,255,0.1), rgba(0,212,255,0.05));
+      padding: 0 5%;
+    }
+
+    .hero h2 {
+      font-size: clamp(2rem, 6vw, 3rem);
+      background: linear-gradient(90deg, #0077ff, #00d4ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      max-width: 700px;
+      margin: 0 auto;
+      color: #34495e;
+    }
+
+    .btn {
+      margin-top: 2rem;
+      padding: 0.8rem 2rem;
+      border: none;
+      border-radius: 50px;
+      background: linear-gradient(90deg, #0077ff, #00d4ff);
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,119,255,0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,119,255,0.4);
+    }
+
+    section {
+      padding: 4rem 5%;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    section h3 {
+      text-align: center;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      margin-bottom: 2rem;
+      color: #0077ff;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0,119,255,0.15);
+    }
+
+    .card h4 {
+      margin-top: 0;
+      color: #0077ff;
+    }
+
+    footer {
+      background: rgba(255,255,255,0.8);
+      text-align: center;
+      padding: 2rem 5%;
+      font-size: 0.9rem;
+      color: #555;
+      box-shadow: 0 -4px 12px rgba(0,0,0,0.05);
+    }
+
+    /* 投げ銭セクション */
+    #support {
+      padding: 6rem 5%;
+      background: #f0f8ff;
+      border-radius: 20px;
+      margin: 4rem auto;
+      max-width: 800px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    #support p {
+      font-size: clamp(1rem, 2.5vw, 1.1rem);
+      margin-bottom: 2rem;
+      color: #34495e;
+    }
+
+    #support a {
+      display: inline-block;
+      padding: 15px 35px;
+      background: #00cfff;
+      color: #fff;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+      box-shadow: 0 4px 12px rgba(0,207,255,0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+      margin: 0.5rem;
+    }
+
+    #support a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,207,255,0.4);
+    }
+
+    /* 代表社員セクション */
+    #representative {
+      padding: 4rem 5%;
+      max-width: 900px;
+      margin: 4rem auto;
+      text-align: center;
+    }
+
+    .representative-card {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .representative-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0,119,255,0.15);
+    }
+
+    .representative-card img {
+      width: clamp(100px, 20%, 150px);
+      height: clamp(100px, 20%, 150px);
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #00cfff;
+    }
+
+    .rep-info {
+      flex: 1;
+      min-width: 250px;
+      text-align: left;
+    }
+
+    .rep-info h4 {
+      margin: 0 0 0.5rem 0;
+      color: #0077ff;
+    }
+
+    .rep-info p {
+      color: #34495e;
+      margin-bottom: 1rem;
+    }
+
+    .rep-info .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      background: linear-gradient(90deg, #0077ff, #00d4ff);
+      color: #fff;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .rep-info .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,212,255,0.4);
+    }
+
+    /* メディアクエリ */
+    @media (max-width: 768px) {
+      .rep-info {
+        text-align: center;
+      }
+      header {
+        justify-content: center;
+      }
+      nav {
+        margin-top: 0.5rem;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      nav a {
+        margin: 0.5rem 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        height: auto;
+        padding: 4rem 5%;
+      }
+      .hero h2 {
+        font-size: clamp(1.5rem, 7vw, 2.5rem);
+      }
+      .hero p {
+        font-size: clamp(0.9rem, 3vw, 1rem);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Wakuwaku of the Future Lab</h1>
+    <nav>
+      <a href="#vision">ビジョン</a>
+      <a href="#about">事業内容</a>
+      <a href="#representative">代表</a>
+      <a href="#apps">Webアプリ</a>
+      <a href="#support">応援</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>未来を創るWebアプリ</h2>
+    <p>まだ見たことのない未来の「わくわく」を皆様へ届ける</p>
+    <a class="btn" href="#apps">Webアプリを使ってみる</a>
+  </section>
+
+  <section id="vision">
+    <h3>ビジョン</h3>
+    <p style="text-align:center; max-width:800px; margin:auto;">
+      誰一人取り残さない、未来の「わくわく」を体験できるようなWebアプリ開発を目指しています。<br>私たちは技術の力で日常生活をより便利にし、すべての人が新しい体験を楽しめる社会を創造します。
+    </p>
+  </section>
+
+  <section id="about">
+    <h3>事業内容</h3>
+    <div class="cards">
+      <div class="card">
+        <h4>Webアプリ開発</h4>
+        <p>日常を便利にするWebアプリを無料公開し、多くの人に使ってもらえるよう取り組んでいます。</p>
+      </div>
+      <div class="card">
+        <h4>技術研究</h4>
+        <p>将来的には移動ロボットとWebアプリの融合事業など、新しい技術の研究・応用にも挑戦していきます。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="representative">
+    <h3>代表</h3>
+    <div class="representative-card">
+      <img src="../assets/toma.jpg" alt="代表社員の写真" style="width:150px; height:150px; border-radius:50%; object-fit:cover;">
+      <div class="rep-info">
+        <h4>奥河 董馬</h4>
+        <p>弓削商船高等専門学校 情報工学科 2年生</p>
+        <p>PythonやMySQLを用いたデータ分析をはじめとし、画像処理やWebアプリ開発にも取り組んでいます。</p>
+        <a href="https://mirakurutomato.github.io/Toma_Okugawa/html/home.html" class="btn">代表社員のサイトへ</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="apps">
+    <h3>公開中のWebアプリ</h3>
+    <div class="cards">
+      <div class="card">
+        <h4>公開準備中</h4>
+        <p>coming soon</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="support">
+    <h3>応援していただける方へ</h3>
+    <p>もし私たちのWebアプリや活動を応援していただける場合は、こちらからサポートが可能です。</p>
+    <a href="thankyou.html">投げ銭で応援する</a>
+  </section>
+
+  <footer>
+    &copy; 2025 Wakuwaku of the Future Lab. All Rights Reserved.
+  </footer>
+</body>
+</html>
