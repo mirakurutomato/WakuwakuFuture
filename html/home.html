@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Wakuwaku of the Future Lab | 未来の教育アプリ開発 | 席替えアプリ無料提供</title>
+  <title>Wakuwaku of the Future Lab</title>
   <meta name="description" content="誰一人取り残さない、未来の「学び」を体験できるような教育アプリ開発を目指しています。私たちは技術の力で学びをより身近にし、すべての人が新しい教育体験を楽しめる社会を創造します。席替えアプリなど無料Webアプリを公開中。">
   <meta name="keywords" content="教育アプリ,Webアプリ,席替えアプリ,学習支援,教育技術,無料アプリ,クラス管理,教育DX,EdTech,弓削商船高専">
   <meta name="author" content="奥河董馬 (Toma Okugawa) - Wakuwaku of the Future Lab">
@@ -346,11 +346,12 @@
     }
 
     .representative-card img {
-      width: clamp(100px, 20%, 150px);
-      height: clamp(100px, 20%, 150px);
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
       object-fit: cover;
       border: 3px solid #00cfff;
+      flex-shrink: 0; /* 画像サイズの変動を防ぐ */
     }
 
     .rep-info {
@@ -502,3 +503,4 @@
   </footer>
 </body>
 </html>
+
