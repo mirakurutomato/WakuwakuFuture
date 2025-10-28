@@ -1,0 +1,692 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Wakuwaku Focus - あなたの集中を、可視化する</title>
+    <meta name="description" content="AIが学習中の姿勢から集中度をリアルタイムに測定。あなたの学びを最適化する次世代アプリ">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #000000;
+            --bg-secondary: #1d1d1f;
+            --text-primary: #f5f5f7;
+            --text-secondary: #86868b;
+            --accent-blue: #0071e3;
+            --accent-purple: #bf5af2;
+            --accent-cyan: #5ac8fa;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 24px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(191, 90, 242, 0.15) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: translateX(-50%) scale(1);
+            }
+
+            50% {
+                opacity: 0.5;
+                transform: translateX(-50%) scale(1.1);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .hero-eyebrow {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--accent-purple);
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-title {
+            font-size: 72px;
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #fff 0%, #a1a1a6 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 24px;
+            font-weight: 400;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 980px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent-blue);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: #0077ed;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 113, 227, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            border-color: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 120px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-eyebrow {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--accent-cyan);
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .section-title {
+            font-size: 56px;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            font-size: 20px;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 48px 36px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(191, 90, 242, 0.05), rgba(90, 200, 250, 0.05));
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-icon.blue {
+            background: linear-gradient(135deg, #0071e3, #5ac8fa);
+        }
+
+        .feature-icon.purple {
+            background: linear-gradient(135deg, #bf5af2, #ff375f);
+        }
+
+        .feature-icon.green {
+            background: linear-gradient(135deg, #30d158, #5ac8fa);
+        }
+
+        .feature-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-description {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 120px 24px;
+            background: var(--bg-secondary);
+        }
+
+        .steps-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .step {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 100px;
+        }
+
+        .step:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .step-number {
+            font-size: 120px;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-cyan));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0.2;
+            line-height: 1;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .step-description {
+            font-size: 18px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .step-visual {
+            flex: 1;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 120px 24px;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 48px;
+            max-width: 1000px;
+            margin: 60px auto 0;
+        }
+
+        .stat-item {
+            padding: 32px;
+        }
+
+        .stat-number {
+            font-size: 64px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
+        }
+
+        .stat-label {
+            font-size: 18px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 120px 24px;
+            background: linear-gradient(135deg, rgba(191, 90, 242, 0.1), rgba(0, 113, 227, 0.1));
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+
+        .cta-subtitle {
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 24px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-text {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 40px;
+                letter-spacing: -1px;
+            }
+
+            .hero-subtitle {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .step {
+                flex-direction: column !important;
+                gap: 32px;
+                margin-bottom: 60px;
+            }
+
+            .step-number {
+                font-size: 80px;
+            }
+
+            .step-title {
+                font-size: 28px;
+            }
+
+            .step-visual {
+                width: 100%;
+                height: 250px;
+            }
+
+            .cta-title {
+                font-size: 36px;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">Wakuwaku Focus</a>
+            <ul class="nav-links">
+                <li><a href="#features">機能</a></li>
+                <li><a href="#how">使い方</a></li>
+                <li><a href="#stats">実績</a></li>
+                <li><a href="#download">ダウンロード</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content animate-in">
+            <div class="hero-eyebrow">AI姿勢認識テクノロジー</div>
+            <h1 class="hero-title">あなたの集中を<br>可視化する</h1>
+            <p class="hero-subtitle">
+                学習中の姿勢をAIがリアルタイム分析。<br>
+                集中度を数値化して、最高のパフォーマンスへ導きます。
+            </p>
+            <div class="cta-buttons">
+                <a href="#download" class="btn btn-primary">今すぐダウンロード</a>
+                <a href="#how" class="btn btn-secondary">詳しく見る</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-header">
+            <div class="section-eyebrow">FEATURES</div>
+            <h2 class="section-title">学びを変える、3つの機能</h2>
+            <p class="section-subtitle">
+                最先端の姿勢認識技術で、あなたの学習体験を革新します
+            </p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon blue">📊</div>
+                <h3 class="feature-title">リアルタイム集中度測定</h3>
+                <p class="feature-description">
+                    カメラで姿勢を認識し、集中度を1秒ごとに測定。学習の質をリアルタイムで把握できます。
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon purple">📈</div>
+                <h3 class="feature-title">詳細な学習分析</h3>
+                <p class="feature-description">
+                    日別・週別の集中度推移をグラフで可視化。あなたの学習パターンを深く理解します。
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon green">🎯</div>
+                <h3 class="feature-title">パーソナライズされた提案</h3>
+                <p class="feature-description">
+                    AIが最適な休憩タイミングや学習環境の改善点を提案。効率的な学習をサポートします。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how">
+        <div class="section-header">
+            <div class="section-eyebrow">HOW IT WORKS</div>
+            <h2 class="section-title">3ステップで始める</h2>
+        </div>
+
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-number">01</div>
+                <div class="step-content">
+                    <h3 class="step-title">アプリを起動</h3>
+                    <p class="step-description">
+                        デバイスのカメラを使って、学習中の姿勢を自動認識。プライバシーに配慮した設計で、データはすべてローカルに保存されます。
+                    </p>
+                </div>
+                <div class="step-visual">📱</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">02</div>
+                <div class="step-content">
+                    <h3 class="step-title">学習を開始</h3>
+                    <p class="step-description">
+                        いつも通り学習するだけ。AIが姿勢から集中度を分析し、リアルタイムでフィードバックを表示します。
+                    </p>
+                </div>
+                <div class="step-visual">✏️</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">03</div>
+                <div class="step-content">
+                    <h3 class="step-title">結果を確認</h3>
+                    <p class="step-description">
+                        学習後は詳細なレポートで振り返り。集中できた時間帯や改善ポイントが一目でわかります。
+                    </p>
+                </div>
+                <div class="step-visual">📊</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats" id="stats">
+        <div class="section-header">
+            <div class="section-eyebrow">ACHIEVEMENTS</div>
+            <h2 class="section-title">実績が証明する効果</h2>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">信頼</div>
+                <div class="stat-label">姿勢推定を研究する学生が、専門知識を活かして開発を行っています。</div>
+            </div>
+
+            <div class="stat-item">
+                <div class="stat-number">技術</div>
+                <div class="stat-label">様々なプログラミング言語に特化した高専生が、高品質なアプリを開発しています。</div>
+            </div>
+
+            <div class="stat-item">
+                <div class="stat-number">成果</div>
+                <div class="stat-label">研究と開発の両立により、実際のユーザー環境で効果を実証しています。</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="download">
+        <div class="cta-content">
+            <h2 class="cta-title">今日から、集中力を<br>コントロールする</h2>
+            <p class="cta-subtitle">
+                無料でダウンロード。あなたの学習を次のレベルへ。
+            </p>
+            <div class="cta-buttons">
+                <a class="btn btn-primary">Coming Soon</a>
+                <!-- a href="#" class="btn btn-primary">App Storeからダウンロード</a -->
+                <!-- a href="#" class="btn btn-primary">Google Playで入手</a -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-text">
+            &copy; 2025 Wakuwaku of the Future Lab. All Rights Reserved.
+        </p>
+    </footer>
+
+    <script>
+        // Smooth scroll animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .step, .stat-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.8s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>
