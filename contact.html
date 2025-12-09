@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wakuwaku of the Future Lab</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1>Wakuwaku of the Future Lab</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">ホーム</a></li>
+                <li><a href="about.html" class="nav-link">研究室概要</a></li>
+                <li><a href="research.html" class="nav-link">研究内容</a></li>
+                <li><a href="members.html" class="nav-link">メンバー</a></li>
+                <li><a href="news.html" class="nav-link">お知らせ</a></li>
+                <li><a href="contact.html" class="nav-link active">お問い合わせ</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">お問い合わせ</h1>
+            <p class="page-subtitle">研究について、ご相談・お問い合わせください</p>
+        </div>
+    </section>
+
+    <!-- Contact Info Section -->
+    <section id="contact-info" class="contact-info-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">連絡先情報</h2>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card fade-in">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>メールアドレス</h3>
+                    <p>i24010@yuge.kosen-ac.jp<br>
+                        24時間受付</p>
+                </div>
+                <div class="contact-card fade-in">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>研究室稼働時間</h3>
+                    <p>月-金：19:00-22:00<br>
+                        土：10:00-16:00<br>
+                        （日・祝日は休室）</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact-form" class="contact-form-section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">お問い合わせフォーム</h2>
+                <p class="section-subtitle">以下のフォームからお問い合わせください</p>
+            </div>
+            <form id="contact-form-element" class="contact-form">
+                <div class="form-group">
+                    <label for="name">お名前 <span class="required">*</span></label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">メールアドレス <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="organization">所属</label>
+                    <input type="text" id="organization" name="organization" placeholder="例：〇〇大学〇〇学部">
+                </div>
+                <div class="form-group">
+                    <label for="inquiry-type">お問い合わせ種別 <span class="required">*</span></label>
+                    <select id="inquiry-type" name="inquiry-type" required>
+                        <option value="">選択してください</option>
+                        <option value="research">研究について</option>
+                        <option value="admission">進学希望</option>
+                        <option value="collaboration">共同研究</option>
+                        <option value="media">メディア取材</option>
+                        <option value="other">その他</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="subject">件名 <span class="required">*</span></label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">お問い合わせ内容 <span class="required">*</span></label>
+                    <textarea id="message" name="message" rows="10" required placeholder="具体的にお聞かせください"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-large">メールアプリで送信</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Wakuwaku of the Future Lab</h3>
+                    <p>暗闇を明るく照らす未来の技術</p>
+                </div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="index.html">ホーム</a></li>
+                        <li><a href="about.html">研究室概要</a></li>
+                        <li><a href="research.html">研究内容</a></li>
+                        <li><a href="members.html">メンバー</a></li>
+                        <li><a href="news.html">お知らせ</a></li>
+                        <li><a href="contact.html">お問い合わせ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Wakuwaku of the Future Lab. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        const contactForm = document.getElementById('contact-form-element');
+
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const name = formData.get('name')?.trim();
+            const email = formData.get('email')?.trim();
+            const inquiryType = formData.get('inquiry-type')?.trim();
+            const subject = formData.get('subject')?.trim();
+            const message = formData.get('message')?.trim();
+            const organization = formData.get('organization')?.trim();
+
+            if (!name || !email || !inquiryType || !subject || !message) {
+                alert('必須項目をすべて入力してください。');
+                return;
+            }
+
+            const mailSubject = `[${inquiryType}] ${subject}`;
+            const mailBodyLines = [
+                `お名前: ${name}`,
+                `メール: ${email}`,
+                organization ? `所属: ${organization}` : null,
+                '',
+                'お問い合わせ内容:',
+                message
+            ].filter(Boolean);
+
+            const mailtoLink = `mailto:i24010@yuge.kosen.ac.jp?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBodyLines.join('\n'))}`;
+            window.location.href = mailtoLink;
+        });
+    </script>
+</body>
+
+</html>

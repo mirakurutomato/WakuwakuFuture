@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wakuwaku of the Future Lab</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1>Wakuwaku of the Future Lab</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">ホーム</a></li>
+                <li><a href="about.html" class="nav-link">研究室概要</a></li>
+                <li><a href="research.html" class="nav-link">研究内容</a></li>
+                <li><a href="members.html" class="nav-link">メンバー</a></li>
+                <li><a href="news.html" class="nav-link active">お知らせ</a></li>
+                <li><a href="contact.html" class="nav-link">お問い合わせ</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">お知らせ</h1>
+            <p class="page-subtitle">Wakuwaku of the Future Labの最新情報をお届けします</p>
+        </div>
+    </section>
+
+    <!-- News Filter -->
+    <section id="news-filter" class="news-filter-section">
+        <div class="container">
+            <div class="filter-container">
+                <button class="filter-btn active" data-category="all">すべて</button>
+                <button class="filter-btn" data-category="conference">論文</button>
+                <button class="filter-btn" data-category="award">受賞</button>
+                <button class="filter-btn" data-category="recruitment">採用情報</button>
+                <button class="filter-btn" data-category="equipment">設備更新</button>
+                <button class="filter-btn" data-category="event">イベント</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- News List -->
+    <section id="news-list" class="news-list-section">
+        <div class="container">
+            <div class="news-container">
+                <!-- 2025年11月 -->
+                <article class="news-item fade-in" data-category="conference">
+                    <div class="news-date">2025.11.20</div>
+                    <div class="news-category">論文</div>
+                    <h2 class="news-title">査読無し論文投稿</h2>
+                    <p class="news-content">
+                        代表の奥河董馬の査読無し論文が、Jxivにて公開されました。
+                    </p>
+                    <div class="news-tags">
+                        <span class="tag">XCR</span>
+                        <span class="tag">リアルタイム処理</span>
+                        <span class="tag">Jxiv</span>
+                    </div>
+                </article>
+
+                <article class="news-item fade-in" data-category="conference">
+                    <div class="news-date">2025.11.12</div>
+                    <div class="news-category">論文</div>
+                    <h2 class="news-title">査読無し論文投稿</h2>
+                    <p class="news-content">
+                        代表の奥河董馬の査読無し論文が、Jxivにて公開されました。
+                    </p>
+                    <div class="news-tags">
+                        <span class="tag">FSSR</span>
+                        <span class="tag">リアルタイム処理</span>
+                        <span class="tag">骨格検出</span>
+                        <span class="tag">Jxiv</span>
+                    </div>
+                </article>
+
+                <!-- 2025年10月 -->
+                <article class="news-item fade-in" data-category="award">
+                    <div class="news-date">2025.10.24</div>
+                    <div class="news-category">受賞</div>
+                    <h2 class="news-title">優秀発表賞</h2>
+                    <p class="news-content">
+                        代表の奥河董馬が、電気・電子・情報関係学会四国支部連合大会にて優秀発表賞を受賞しました。
+                    </p>
+                    <div class="news-tags">
+                        <span class="tag">弓道</span>
+                        <span class="tag">Webアプリ</span>
+                        <span class="tag">リアルタイム処理</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Wakuwaku of the Future Lab</h3>
+                    <p>暗闇を明るく照らす未来の技術</p>
+                </div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="index.html">ホーム</a></li>
+                        <li><a href="about.html">研究室概要</a></li>
+                        <li><a href="research.html">研究内容</a></li>
+                        <li><a href="members.html">メンバー</a></li>
+                        <li><a href="news.html">お知らせ</a></li>
+                        <li><a href="contact.html">お問い合わせ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Wakuwaku of the Future Lab. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // News filtering functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const newsItems = document.querySelectorAll('.news-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const category = button.getAttribute('data-category');
+
+                newsItems.forEach(item => {
+                    if (category === 'all' || item.getAttribute('data-category') === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

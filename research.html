@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wakuwaku of the Future Lab</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1>Wakuwaku of the Future Lab</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">ホーム</a></li>
+                <li><a href="about.html" class="nav-link">研究室概要</a></li>
+                <li><a href="research.html" class="nav-link active">研究内容</a></li>
+                <li><a href="members.html" class="nav-link">メンバー</a></li>
+                <li><a href="news.html" class="nav-link">お知らせ</a></li>
+                <li><a href="contact.html" class="nav-link">お問い合わせ</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">研究内容</h1>
+            <p class="page-subtitle">低照度画像強調技術の最先端研究</p>
+        </div>
+    </section>
+
+    <!-- Research Overview -->
+    <section id="research-overview" class="research-overview">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">研究概要</h2>
+                <p class="section-subtitle">暗い環境でも鮮明に、見えない世界を可視化する</p>
+            </div>
+            <div class="content-with-media">
+                <div class="overview-text">
+                    <p>Wakuwaku of the Future Lab
+                        では、夜間や暗い環境で撮影された画像を明るく・鮮明に変換する「低照度画像強調技術」の研究開発を行っています。この技術は、人間の目では見えない情報を可視化し、様々な分野での応用が期待されています。
+                    </p>
+                    <p>私たちは低照度画像強調技術の中でもRetinex理論を用いることで、従来技術を超える高性能な画像強調技術の開発を目指しています。</p>
+                </div>
+                <figure class="media-figure">
+                    <div class="media-frame" style="--media-ratio: 16/9;">
+                        <img src="Image/research-overview.png" alt="低照度画像強調の結果例" loading="lazy">
+                    </div>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Areas -->
+    <section id="research-areas" class="research-areas">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">研究分野</h2>
+                <p class="section-subtitle">ディープラーニングを使わない、数式のみで構築する手法</p>
+            </div>
+            <div class="areas-grid">
+                <div class="area-card fade-in">
+                    <div class="area-header">
+                        <div class="area-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Retinex理論</h3>
+                    </div>
+                    <div class="area-content">
+                        <p>人間の視覚システムをモデル化したRetinex理論に基づき、光の反射と陰影を分析して自然な色再現と詳細增强を実現します。</p>
+                        <h4>主な技術要素</h4>
+                        <ul>
+                            <li>単一尺度Retinex（SSR）</li>
+                            <li>多尺度Retinex（MSR）</li>
+                            <li>カラーベースRetinex</li>
+                            <li>変分ベースアプローチ</li>
+                        </ul>
+                        <h4>期待される成果</h4>
+                        <ul>
+                            <li>自然な色調補正</li>
+                            <li>コントラストの改善</li>
+                            <li>詳細情報の保持</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Process -->
+    <section id="research-process" class="research-process">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">研究プロセス</h2>
+                <p class="section-subtitle">理論から実装、評価までの一貫した研究活動</p>
+            </div>
+            <div class="process-timeline">
+                <div class="process-item fade-in">
+                    <div class="process-number">01</div>
+                    <div class="process-content">
+                        <h3>既存手法の分析</h3>
+                        <p>Retinex理論に基づく既存の低照度画像強調手法を包括的に分析し、長所と短所を評価します。理論的な基礎を深く理解し、研究の土台を作ります。</p>
+                        <div class="process-tags">
+                            <span class="tag">文献調査</span>
+                            <span class="tag">理論分析</span>
+                            <span class="tag">性能評価</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="process-item fade-in">
+                    <div class="process-number">02</div>
+                    <div class="process-content">
+                        <h3>新手法の提案</h3>
+                        <p>既存手法の問題点を解決する新しいアプローチを提案します。理論的な検証と実験的な評価を通じて、有効性を確認します。</p>
+                        <div class="process-tags">
+                            <span class="tag">理論構築</span>
+                            <span class="tag">アルゴリズム設計</span>
+                            <span class="tag">実装</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="process-item fade-in">
+                    <div class="process-number">03</div>
+                    <div class="process-content">
+                        <h3>性能評価</h3>
+                        <p>学生リードが開発した新手法の性能を、客観的・主観的な指標を用いて評価します。アルゴリズムの有効性を検証し、改善点を見出します。</p>
+                        <div class="process-tags">
+                            <span class="tag">実験評価</span>
+                            <span class="tag">データ分析</span>
+                            <span class="tag">改善提案</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="process-item fade-in">
+                    <div class="process-number">04</div>
+                    <div class="process-content">
+                        <h3>数理モデルの構築</h3>
+                        <p>新しい数理モデルやアルゴリズムを共に創造します。既存手法の問題点を解決し、より高性能な低照度画像強調技術の開発に挑戦します。</p>
+                        <div class="process-tags">
+                            <span class="tag">数理モデル</span>
+                            <span class="tag">最適化</span>
+                            <span class="tag">検証</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Applications -->
+    <section id="applications" class="research-applications">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">応用分野</h2>
+                <p class="section-subtitle">幅広い分野での実用化を目指す</p>
+            </div>
+            <div class="applications-grid">
+                <div class="application-card fade-in">
+                    <div class="app-header">
+                        <div class="app-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3>安全監視</h3>
+                    </div>
+                    <div class="app-content">
+                        <p>夜間のセキュリティカメラ映像を鮮明にすることで、防犯・防灾に貢献します。</p>
+                        <h4>具体的な応用</h4>
+                        <ul>
+                            <li>防犯カメラの映像改善</li>
+                            <li>交通監視システム</li>
+                            <li>災害時の捜索支援</li>
+                            <li>国境警備システム</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="application-card fade-in">
+                    <div class="app-header">
+                        <div class="app-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h3>医療画像解析</h3>
+                    </div>
+                    <div class="app-content">
+                        <p>低照度の医療画像を鮮明にすることで、医師の診断精度の向上に貢献します。</p>
+                        <h4>具体的な応用</h4>
+                        <ul>
+                            <li>内視鏡画像の改善</li>
+                            <li>X線画像の鮮明化</li>
+                            <li>病理診断支援</li>
+                            <li>遠隔医療システム</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="application-card fade-in">
+                    <div class="app-header">
+                        <div class="app-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3>天文学</h3>
+                    </div>
+                    <div class="app-content">
+                        <p>遠方の暗い天体観測データを強調することで、宇宙の謎に迫ります。</p>
+                        <h4>具体的な応用</h4>
+                        <ul>
+                            <li>天体観測データの処理</li>
+                            <li>惑星探査画像の解析</li>
+                            <li>宇宙望遠鏡の画像改善</li>
+                            <li>宇宙現象の検出</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Wakuwaku of the Future Lab</h3>
+                    <p>暗闇を明るく照らす未来の技術</p>
+                </div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="index.html">ホーム</a></li>
+                        <li><a href="about.html">研究室概要</a></li>
+                        <li><a href="research.html">研究内容</a></li>
+                        <li><a href="members.html">メンバー</a></li>
+                        <li><a href="news.html">お知らせ</a></li>
+                        <li><a href="contact.html">お問い合わせ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Wakuwaku of the Future Lab. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

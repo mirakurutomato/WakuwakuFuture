@@ -1,0 +1,173 @@
+/* Animation states */
+.slide-in-left,
+.slide-in-right,
+.slide-in-up,
+.zoom-in,
+.fade-in-up {
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(.33, 1, .68, 1);
+}
+
+.slide-in-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.slide-in-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.slide-in-up.visible,
+.fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.zoom-in.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.slide-in-left {
+    transform: translateX(-30px);
+}
+
+.slide-in-right {
+    transform: translateX(30px);
+}
+
+.slide-in-up,
+.fade-in-up {
+    transform: translateY(24px);
+}
+
+.zoom-in {
+    transform: scale(0.95);
+}
+
+/* Keyframes */
+@keyframes float {
+    0% {
+        transform: translate(-50%, 0);
+    }
+
+    50% {
+        transform: translate(-50%, -8px);
+    }
+
+    100% {
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes sheen {
+    0% {
+        transform: translateX(-120%);
+    }
+
+    100% {
+        transform: translateX(120%);
+    }
+}
+
+@keyframes heartbeat {
+    0% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(1.02);
+    }
+
+    50% {
+        transform: scale(0.99);
+    }
+
+    75% {
+        transform: scale(1.015);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes ripple {
+    from {
+        transform: scale(0);
+        opacity: 0.35;
+    }
+
+    to {
+        transform: scale(3.4);
+        opacity: 0;
+    }
+}
+
+@keyframes morph {
+    0% {
+        border-radius: 35% 65% 60% 40% / 40% 40% 60% 60%;
+    }
+
+    50% {
+        border-radius: 55% 45% 50% 50% / 45% 60% 40% 55%;
+    }
+
+    100% {
+        border-radius: 35% 65% 60% 40% / 40% 40% 60% 60%;
+    }
+}
+
+/* Effects */
+.heartbeat {
+    animation: heartbeat 1.2s ease;
+}
+
+.ripple-effect {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.35);
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    pointer-events: none;
+}
+
+.morph {
+    animation: morph 12s ease-in-out infinite;
+    animation-play-state: paused;
+}
+
+/* Optional tiny particles used in hero */
+.particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: rgba(123, 240, 198, 0.8);
+    border-radius: 50%;
+    animation: rise 6s linear infinite;
+    opacity: 0.8;
+}
+
+@keyframes rise {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-120vh);
+        opacity: 0;
+    }
+}
